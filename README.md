@@ -93,6 +93,12 @@ yama.register({
 });
 ```
 
+Result :
+![Yama to do list](http://i.imgur.com/MWPDark.png "Yama to do list example")
+[See it live](http://celebio.github.io/Yama.js/#simpletodo)
+
+
+
 [See more examples on project website](http://celebio.github.io/Yama.js/)
 
 
