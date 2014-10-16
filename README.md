@@ -93,6 +93,8 @@ yama.register({
 });
 ```
 
+[See more examples on project website](http://celebio.github.io/Yama.js/)
+
 
 License
 ----
