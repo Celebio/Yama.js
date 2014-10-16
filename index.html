@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yama</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/design.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="js/yama.js"></script>
+
+  </head>
+  <body>
+
+
+    <div class="jumbCont">
+        
+        <div class="container">
+            <div class="jumbotron">
+          
+                <h1>Yama.js</h1>
+                <p class="lead">Build Reusable UI in Javascript.</p>
+                <p><a class="btn btn-lg btn-success" href="#" role="button">Download 0.1.0</a></p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                  <h2>Enhanced reusability</h2>
+                  <p>Yama encourages you to describe your UI as a component, that means you can reuse it later inside another component.</p>
+                  <p><a class="btn btn-success" href="#reuse" role="button">View example &raquo;</a></p>
+                </div>
+                <div class="col-lg-4">
+                  <h2>Declarative UI in js</h2>
+                  <p>Yama includes a simple templating syntax to build the dom tree of your UI, and it binds automatically events and observables to your view object.</p>
+                  <p><a class="btn btn-success" href="#declUI" role="button">View example &raquo;</a></p>
+                </div>
+                <div class="col-lg-4">
+                  <h2>Real observables</h2>
+                  <p>Observables with seamless js syntax. Yama uses native javascript accessors to handle changes in view objects. It means that you can't get in trouble with digest loop because there isn't one.</p>
+                  <p><a class="btn btn-success" href="#basicInt" role="button">View example &raquo;</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>Yama.js is an attemp to combine what I liked most of Angular, Knockout and React.</h3>
+        <p>It gets :
+            <ul>
+                <li>from <b>React</b>: The "everything is a component"  philosophy and UI description in javascript files,</li>
+                <li>from <b>Angular</b> : Observables with seamless js syntax. <code>myComponent.title = "Hi"</code> instead of <code>myComponent.title("Hi")</code></li>
+                <li>from <b>Knockout</b> : Declarative binding attributes</li>
+            </ul>
+        </p>
+    </div>
+    <div class="feat">
+        
+        <div class="container">
+            <h3>... and it is:</h3>
+            <div class="row">
+                <div class="col-lg-3">
+                  <h3>Free, open source</h3>
+                  <p><a class="btn btn-success" href="#" role="button">Fork it on Github &raquo;</a></p>
+                </div>
+                <div class="col-lg-3">
+                  <h3>Vanilla JavaScript</h3>
+                  <p>works with any web framework and has no dependencies.</p>
+               </div>
+                <div class="col-lg-3">
+                  <h3>Not verbose</h3>
+                  <p>You only take care of writing the behaviour of your UI, nothing else.</p>
+                  <p><a class="btn btn-success" href="#simpletodo" role="button">See "to do list" example &raquo;</a></p>
+                </div>
+                <div class="col-lg-3">
+                  <h3>Lightweight</h3>
+                  <p>5 KB minified</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <section>
+        <div class="container">
+            <h2>Hello world example</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <pre>
+yama.register({
+    <b>name</b> : 'myComponent1',
+    <b>draw</b> : function(){
+        /*!
+        root
+            div text:title
+        !*/
+    },
+
+    title : "Hello, world !"
+});</pre>
+<pre>
+var myComponent = new yama.components.myComponent1(document.body);
+</pre>
+                </div>
+                <div class="col-lg-6">
+                    <div id="example1" class="result"></div>
+                    <div class="alert alert-warning" role="alert">
+        Results shown in this page are styled with border and padding for the purpose of clarity. Yama actually builds a plain dom tree without style. 
+      </div>
+                </div>
+            </div>
+            <p>To create a UI, Yama encourages you to write it as a <a href="#reuse">reusable</a> component.
+            </p>
+            <p>First, you have to name your component with <code>name</code> property. Here we named it <code>myComponent1</code>.</p>
+            <p>Second, you have to describe the way your component should be drawn. The UI is declared <b>as a comment</b> in <code>draw</code> function. In this example, we tell yama to create a div in the component's root dom and to bind it's text to the component's <code>title</code> property.</p>
+
+            <p>And that's it. In this example, we also add a custom property to our component : <code>title</code>. In draw function we told yama to bind the div's inner text to the value of title property with the directive <code>text:title</code>.</p>
+
+            <p>Now your component is ready to use. In plain javascript, you can call the constructor <code>new yama.components.myComponent1();</code>
+            If you want your component to be drawn into a specific dom element : <code>var myComponent = new yama.components.myComponent1(document.getElementById("example1"));</code></p>
+
+            <div class="alert alert-warning" role="alert">
+                The UI described as a comment may sound weird. The comment is serialized by yama, analysed by a simple parser, and rendered. Binding attributes are bound to observables. The use of comment as a multi-line string is actually a hack to provide a simple way to build UI with a non-verbose templating language.  
+            </div>
+        </div>
+        <script>
+yama.register({
+    name : 'myComponent1',
+    draw : function(){
+        /*!
+        root
+            div text:title
+        !*/
+    },
+    title : "Hello, world !"
+});
+
+
+yama.addLoadEvent(function(){
+    var cont = document.getElementById("example1");
+    var myComponent = new yama.components.myComponent1(cont);    
+});
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="declUI">
+        <div class="container">
+            <h2>Building a simple UI</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <pre>
+yama.register({
+    name : 'myComponent2',
+    draw : function(){
+        /*!
+        root
+            div
+                div text:title1
+                div text:title2
+            div
+                span text:title3
+                span text:title4
+        !*/
+    },
+    title1 : "I am here",
+    title2 : "Me too !",
+    title3 : "Ho ho",
+    title4 : "How nice"
+});</pre>
+                </div>
+                <div class="col-lg-6">
+                    <div id="example2" class="result"></div>
+                </div>
+            </div>
+            <p>Here we build a UI with nested <code>div</code> and <code>span</code> elements. The indentation inside the <code>draw</code> function defines the dom tree of your component.
+            </p>
+            <p>Text inside elements are bound to properties <code>title1</code> to <code>title4</code></p>
+        </div>
+        <script>
+yama.register({
+    name : 'myComponent2',
+    draw : function(){
+        /*!
+        root
+            div
+                div text:title1
+                div text:title2
+            div
+                span text:title3
+                span text:title4
+        !*/
+    },
+    title1 : "I am here",
+    title2 : "Me too !",
+    title3 : "Ho ho",
+    title4 : "How nice"
+});
+
+
+yama.addLoadEvent(function(){
+    var cont = document.getElementById("example2");
+    var myComponent = new yama.components.myComponent2(cont);    
+});
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="simpletodo">
+        <div class="container">
+            <h2>A simple To Do List component</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <pre>
+yama.register({
+    name : 'toDoListComponent',
+    draw : function(){
+        /*!
+        root
+          input value:curTask avalue:curTask onenter:addTask
+          div
+            foreach:itVar taskItem:taskList
+              div
+                span text:taskItem
+                span:close text:closeText onclick:onCloseClick
+        !*/
+    },
+
+    curTask : "",
+    closeText : "&times;",
+    taskList : ["Go to Walmart", "Learn to Play Guitar", "Justin Bieber concert"],
+
+    addTask : function(){
+        this.taskList.unshift(this.curTask);
+        this.curTask = '';
+    },
+    onCloseClick : function(g){
+        this.taskList.splice(g('itVar'), 1);
+    }
+});</pre>
+                </div>
+                <div class="col-lg-6">
+                    Type a task and press enter :
+                    <div id="todocompexample" class="result"></div>
+                </div>
+            </div>
+            <p>A simple To Do List component.</p>
+        </div>
+        <script>
+yama.register({
+    name : 'toDoListComponent',
+    draw : function(){
+        /*!
+        root
+            input:inputDom value:curTask avalue:curTask onenter:addTask
+            div:forCont
+                foreach:itVar taskItem:taskList
+                    div:taskDom
+                        span text:taskItem
+                        span:close text:closeText onclick:onCloseClick
+        !*/
+    },
+
+    curTask : "",
+    closeText : "&times;",
+    taskList : ["Go to Walmart", "Learn to Play Guitar", "Justin Bieber concert"],
+    init : function(){
+        this.inputDom.setAttribute('placeholder', "What needs to be done?");
+    },
+
+    addTask : function(){
+        this.taskList.unshift(this.curTask);
+        this.curTask = '';
+    },
+    onCloseClick : function(g){
+        this.taskList.splice(g('itVar'), 1);
+    }
+});
+
+
+yama.addLoadEvent(function(){
+    var cont = document.getElementById("todocompexample");
+    var myComponent = new yama.components.toDoListComponent(cont);    
+});
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section>
+        <div class="container">
+            <h2>Accessing component's dom</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <pre>
+yama.register({
+    name : 'myComponent3',
+    draw : function(){
+        /*!
+        root
+            div text:title
+            div:elapsedDiv
+        !*/
+    },
+    title : "Elapsed time : ",
+});
+
+var elapsed = 0;
+setInterval(function(){ 
+    <b>myComponent3.elapsedDiv</b>.innerHTML = (elapsed++); 
+}, 1000);
+</pre>
+                </div>
+                <div class="col-lg-6">
+                    <div id="example3" class="result"></div>
+                </div>
+            </div>
+            <p>The syntax <code>div:elapsedDiv</code> creates a div when drawing the component and binds the property <code>elapsedDiv</code> to this dom element.</p>
+            <p>You have access to this dom element even outside the declaration of your component with <code>myComponent3.elapsedDiv</code></p>
+        </div>
+        <script>
+yama.register({
+    name : 'myComponent3',
+    draw : function(){
+        /*!
+        root
+            div text:title
+            div:elapsedDiv
+        !*/
+    },
+    title : "Elapsed time : ",
+});
+
+
+yama.addLoadEvent(function(){
+    var cont = document.getElementById("example3");
+    var myComponent3 = new yama.components.myComponent3(cont);
+
+    var elapsed = 0;
+    setInterval(function(){ myComponent3.elapsedDiv.innerHTML = (elapsed++); }, 1000);
+});
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="basicInt">
+        <div class="container">
+            <h2>Basic interaction with your component</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <pre>
+yama.register({
+    name : 'myComponent4',
+    draw : function(){
+        /*!
+        root
+            div text:title
+        !*/
+    },
+    title : "Not clicked yet.",
+});
+
+example4Btn.onclick = function(){ 
+    <b>myComponent4.title = "Clicked !";</b>
+};
+</pre>
+                </div>
+                <div class="col-lg-6">
+                    <div id="example4" class="result"></div>
+                    <span id="example4Btn" class="btn btn-primary">Click here</span>
+                </div>
+            </div>
+            <p>Properties of your component like <code>title</code> are actually hidden observables. When you set a new value to <code>myComponent4.title</code>, yama detects it and notifies all observers which are observing this property : in this example, the div created in <code>draw</code> function observes <code>title</code>. So when we assign a new value to <code>title</code>, the text inside the div element gets updated automatically.</p>
+            <p>Unlike Angular.js, there isn't any digest loop, so the detection works even outside your component's event handlers. In this example, the event is fired from outside, namely from <code>example4Btn</code>.</p>
+        </div>
+        <script>
+yama.register({
+    name : 'myComponent4',
+    draw : function(){
+        /*!
+        root
+            div text:title
+        !*/
+    },
+    title : "Not clicked yet.",
+});
+
+
+yama.addLoadEvent(function(){
+    var cont = document.getElementById("example4");
+    var example4Btn = document.getElementById("example4Btn");
+    var myComponent4 = new yama.components.myComponent4(cont);
+
+    example4Btn.onclick = function(){ 
+        myComponent4.title = "Clicked !";
+    };
+});
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section>
+        <div class="container">
+            <h2>Interaction inside your component</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <pre>
+yama.register({
+    name : 'myComponent5',
+    draw : function(){
+        /*!
+        root
+            span:btn text:btnTitle onclick:<b>btnClick</b>
+            span text:number
+        !*/
+    },
+
+    <b>number</b> : 0,
+
+    btnTitle : "Click here to increment &raquo;",
+    <b>btnClick</b> : function(){
+        <b>this.number++;</b>
+    }
+});</pre>
+                </div>
+                <div class="col-lg-6">
+                    <div id="example5" class="result"></div>
+                </div>
+            </div>
+            <p></p>
+        </div>
+        <script>
+yama.register({
+    name : 'myComponent5',
+    draw : function(){
+        /*!
+        root
+            span:btn text:btnTitle onclick:btnClick
+            span text:number
+        !*/
+    },
+
+    number : 0,
+
+    btnTitle : "Click here to increment &raquo;",
+    btnClick : function(){
+        this.number++;
+    }
+});
+
+
+yama.addLoadEvent(function(){
+    var cont = document.getElementById("example5");
+    var myComponent5 = new yama.components.myComponent5(cont);
+
+});
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="reuse">
+        <div class="container">
+            <h2>Reuse your component : nested components</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <pre>
+yama.register({
+    name : 'myComponent6',
+    draw : function(){
+        /*!
+        root
+            <b>div
+                myComponent5
+                myComponent5
+                myComponent5
+            div
+                myComponent5</b>
+        !*/
+    }
+});</pre>
+                </div>
+                <div class="col-lg-6">
+                    <div id="example6" class="result"></div>
+                </div>
+            </div>
+            <p>Now we can reuse our myComponent5 by simply putting its name instead of a native dom element in the <code>draw</code> function. Yama will render myComponent5 instead of a dom element.</p>
+            <p>Each of them behaves independently.</p>
+        </div>
+        <script>
+yama.register({
+    name : 'myComponent6',
+    draw : function(){
+        /*!
+        root
+            div
+                myComponent5
+                myComponent5
+                myComponent5
+            div
+                myComponent5
+        !*/
+    }
+});
+
+yama.addLoadEvent(function(){
+    var cont = document.getElementById("example6");
+    var myComponent6 = new yama.components.myComponent6(cont);
+
+});
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section>
+        <div class="container">
+            <h2>Access to a nested component</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <pre>
+yama.register({
+    name : 'myComponent7',
+    draw : function(){
+        /*!
+        root
+            div:btn text:btnTitle onclick:btnClick
+            div
+                myComponent5
+                myComponent5:<b>componentChild2</b>
+                myComponent5
+            div
+                myComponent5
+        !*/
+    },
+    
+    btnTitle : "Click here to set second component's value",
+    btnClick : function(){
+        <b>this.componentChild2</b>.number = 1337;
+    }
+});</pre>
+                </div>
+                <div class="col-lg-6">
+                    <div id="example7" class="result"></div>
+                </div>
+            </div>
+            <p>This example shows that custom components we wrote act exactly like a native dom element. They are rendered, you can access them and their properties by naming them.</p>
+            <p>As we saw in the previous example, each of them behaves independently. But their parent has access to their properties.</p>
+            <p>We named the second instance of myComponent5 : <code>componentChild2</code>. That means that we get a pointer to this specific instance of myComponent5 by calling <code>myComponent7.componentChild2</code>. For example <code>myComponent7.componentChild2.number = 1337;</code> will set the property number of this instance of myComponent5 inside myComponent7.</p>
+            <p>By clicking on the button you should see the second nested components value set to 1337.</p>
+        </div>
+        <script>
+yama.register({
+    name : 'myComponent7',
+    draw : function(){
+        /*!
+        root
+            div:btn text:btnTitle onclick:btnClick
+            div
+                myComponent5
+                myComponent5:componentChild2
+                myComponent5
+            div
+                myComponent5
+        !*/
+    },
+    
+    btnTitle : "<b>Click here to set second component's value</b>",
+    btnClick : function(){
+        this.componentChild2.number = 1337;
+    }
+});
+
+yama.addLoadEvent(function(){
+    var cont = document.getElementById("example7");
+    var myComponent7 = new yama.components.myComponent7(cont);
+
+});
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section>
+        <div class="container">
+            <h2>Nested component event fire</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <pre>
+yama.register({
+    name : 'myComponent8Outside',
+    draw : function(){
+        /*!
+        root 
+            myComponent8Inside <b>onMyFabulousEvent:childFiredEvent</b>
+        !*/
+    },
+    
+    <b>childFiredEvent</b> : function(){
+        alert("myComponent8Inside fired onMyFabulousEvent");
+    }
+
+});
+
+
+yama.register({
+    name : 'myComponent8Inside',
+    draw : function(){
+        /*!
+        root
+            div:btn text:btnTitle onclick:btnClick
+        !*/
+    },
+    
+    btnTitle : "Click here to fire myFabulousEvent",
+    btnClick : function(){
+        <b>this.onMyFabulousEvent();</b>
+    }
+});</pre>
+                </div>
+                <div class="col-lg-6">
+                    <div id="example8" class="result"></div>
+                </div>
+            </div>
+            <p>The same way a native dom element like a <code>div</code> can fire <code>onclick</code> event, your custom component can fire custom events as well.</p>
+        </div>
+        <script>
+
+yama.register({
+    name : 'myComponent8Outside',
+    draw : function(){
+        /*!
+        root 
+            myComponent8Inside onMyFabulousEvent:childFiredEvent
+        !*/
+    },
+    
+    childFiredEvent : function(){
+        alert("myComponent8Inside fired onMyFabulousEvent");
+    }
+
+});
+
+
+yama.register({
+    name : 'myComponent8Inside',
+    draw : function(){
+        /*!
+        root
+            div:btn text:btnTitle onclick:btnClick
+        !*/
+    },
+    
+    btnTitle : "Click here to fire myFabulousEvent",
+    btnClick : function(){
+        this.onMyFabulousEvent();
+    }
+});
+
+yama.addLoadEvent(function(){
+    var cont = document.getElementById("example8");
+    var myComponent8 = new yama.components.myComponent8Outside(cont);
+
+});
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section>
+        <div class="container">
+            <h2>Arrays and "foreach" directive</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <pre>
+yama.register({
+    name : 'myComponent9',
+    draw : function(){
+        /*!
+        root
+            div text:title
+            div
+                <b>foreach</b> item:myArray
+                    div text:item
+        !*/
+    },
+
+    title : "Hello",
+    myArray : [2, 4, 6]
+});</pre>
+                </div>
+                <div class="col-lg-6">
+                    <div id="example9" class="result"></div>
+                </div>
+            </div>
+            <p><code>foreach</code> directive in the <code>draw</code> function iterates through an array and renders it's content for each item in the array.</p>
+        </div>
+        <script>
+yama.register({
+    name : 'myComponent9',
+    draw : function(){
+        /*!
+        root
+            div text:title
+            div
+                foreach item:myArray
+                    div text:item
+        !*/
+    },
+
+    title : "Hello",
+    myArray : [2, 4, 6]
+});
+
+yama.addLoadEvent(function(){
+    var cont = document.getElementById("example9");
+    var myComponent9 = new yama.components.myComponent9(cont);
+
+});
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section>
+        <div class="container">
+            <h2>Nested "foreach" directives and index numbers</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <pre>
+yama.register({
+    name : 'myComponent9',
+    draw : function(){
+        /*!
+        root
+            div text:title
+            div:cont2 text:otherTitle
+            div:loopCont1
+                <b>foreach:indVar1</b> iterator1:list1
+                    div:it1cont
+                        div text:it1text
+                        div text:indVar1
+                        div text:iterator1.title
+                        div:loopCont2
+                            <b>foreach:indVar2</b> iterator2:iterator1.list2
+                                div:it2cont
+                                    div text:it2text
+                                    div text:indVar1
+                                    div text:indVar2
+                                    div text:iterator2
+        !*/
+    },
+    it1text : "index1",
+    it2text : "index2",
+
+    title : "Hey",
+    otherTitle : "Other title",
+    list1 : [
+        {
+            'title':"onur",
+            'list2':[1,2,3]
+        },
+        {
+            'title':"test",
+            'list2':[4,5,6]
+        }
+    ]
+});</pre>
+                </div>
+                <div class="col-lg-6">
+                    <div id="example10" class="result"></div>
+                </div>
+            </div>
+            <p>You have access to the index of the iterator during the iteration. We just name the index variable with <code>foreach:indVar1</code> and <code>foreach:indVar2</code>.</p>
+        </div>
+        <script>
+yama.register({
+    name : 'myComponent10',
+    draw : function(){
+        /*!
+        root
+            div text:title
+            div:cont2 text:otherTitle
+            div:loopCont1
+                foreach:indVar1 iterator1:list1
+                    div:it1cont
+                        div text:it1text
+                        div text:indVar1
+                        div text:iterator1.title
+                        div:loopCont2
+                            foreach:indVar2 iterator2:iterator1.list2
+                                div:it2cont
+                                    span text:it2text
+                                    span text:indVar1
+                                    span text:indVar2
+                                    span text:iterator2
+        !*/
+    },
+    it1text : "index1",
+    it2text : "index2",
+
+    title : "Hey",
+    otherTitle : "Other title",
+    list1 : [
+        {
+            'title':"onur",
+            'list2':[1,2,3]
+        },
+        {
+            'title':"test",
+            'list2':[4,5,6]
+        }
+    ]
+
+});
+
+yama.addLoadEvent(function(){
+    var cont = document.getElementById("example10");
+    var myComponent10 = new yama.components.myComponent10(cont);
+
+});
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <section>
+        <div class="container">
+            <h2>Two way binding</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <pre>
+yama.register({
+    name : 'myComponent11',
+    draw : function(){
+        /*!
+        root
+            div
+                div <b>text:title</b>
+                input <b>value:title</b>
+        !*/
+    },
+
+    title : "Initial title here, write something :"
+});</pre>
+                </div>
+                <div class="col-lg-6">
+                    <div id="example11" class="result"></div>
+                </div>
+            </div>
+            <p>Changes in the input element are bound to <code>title</code> property of our component. As each property is a hidden observable, when the input changes the value of <code>title</code>, all observers, namely the div which is observing for it's text attribute gets notified and it's inner text is set to the value of <code>title</code> as well.</p>
+        </div>
+        <script>
+yama.register({
+    name : 'myComponent11',
+    draw : function(){
+        /*!
+        root
+            div
+                div text:title
+                input value:title
+        !*/
+    },
+
+    title : "Initial title here, write something :"
+});
+
+yama.addLoadEvent(function(){
+    var cont = document.getElementById("example11");
+    var myComponent11 = new yama.components.myComponent11(cont);
+
+});
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+        <div class="footer">
+        <p>Yama.js</p>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

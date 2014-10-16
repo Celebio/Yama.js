@@ -1,0 +1,123 @@
+
+/*https://color.adobe.com/beach-color-theme-4537521/
+*/
+
+pre b {
+  color:#9C0C20;
+}
+
+pre {
+  background-color: #DCF2E4;
+}
+
+.navbar{
+  background-color: #2E3140;
+}
+
+.jumbCont{
+  background-color: #118C8C;
+  background: linear-gradient(#118C8C, #146969);
+  color: #DCF2E4;
+}
+.feat{
+  background-color: #118C8C;
+  color: #DCF2E4;
+}
+
+.result{
+    border:1px dashed #EEE;
+    padding:15px;
+}
+
+.result div{
+    border:1px solid #DDD;
+    padding:15px;
+}
+
+.result span{
+    border:1px solid #C3D0DE;
+    padding:15px;
+}
+
+#todocompexample .forCont {
+  padding:1px;
+}
+
+#todocompexample span {
+  padding:0px;
+  border:none;
+}
+#todocompexample input {
+  margin-bottom:5px;
+  font-size: 20px;
+  height:35px;
+  width:250px;
+}
+#todocompexample .taskDom {
+  border:1px solid #EEE;
+  padding:15px;
+  border-radius: 5px;
+}
+
+section {
+    margin-top:50px;
+}
+
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+}
+
+
+
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+
+.header-title{
+    color:#FFF;
+    font-weight: normal;
+    margin-bottom: 30px;
+    font-size:30px;
+}
+
+.header-feature{
+    margin-bottom: 20px;
+    padding:10px;
+    cursor: pointer;
+    border-radius: 5px;
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+       -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+            transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+
+.header-feature:hover{
+    background-color:rgba(0,0,0,0.1);
+
+}
+
+.header-feature .title{
+}
+.header-feature .number{
+    width:30px;
+    height:30px;
+    border-radius:15px;
+    font-size:20px;
+    text-align:center;
+    border:1px solid #888;
+    float: left;
+}
+
+.header-feature .title .title-text{
+    font-size:25px;
+    margin-left:5px;
+}
