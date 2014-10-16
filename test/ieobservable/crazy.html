@@ -1,0 +1,97 @@
+<!-- modified from http://alex.dojotoolkit.org/08/jscript/lettable.html -->
+<html>
+<head>
+  <title>A Crazy Getter/Setter Hack</title>
+</head>
+<body>  
+  <script language="VBScript" type="text/VBScript"> 
+    Function exec_vb_global(code)
+      ExecuteGlobal(code)
+    End Function
+  </script>
+  <script type="text/javascript">
+
+    // Create the main default thing object, we will proxy this later
+    function ThingBase() {
+      // Private
+      var space = 'something about the awesome';
+      
+      this.getSpace = function() {
+        console.log('getting');
+        return space;
+      }
+      this.setSpace = function(value) {
+        console.log('setting');
+        space = value;
+      }
+      this.groove = function() {
+        console.log('nn ts nn ts nn ts nn ts');
+      }
+    }
+  
+    // We need a factory to build this becuase we can't call 'new' from vbscript
+    function ThingBaseFactory() {
+      return new ThingBase();
+    }
+  
+    // Eventually this text construction will be automated for the proxy
+    // All you need to do is build the proxy for each property set*, get*
+    // and stub each method 
+    var obj = ""+
+      "Class ThingProxy\n"+
+      "  Private obj__\n"+
+      "  Public Property Get space\n"+
+      "    space = obj__.getSpace()\n"+
+      "  End Property\n"+
+      "  Public Property Let space(value)\n"+
+      "    obj__.setSpace(value)\n"+
+      "  End Property\n"+      
+      "  Public Function groove\n"+
+      "    obj__.groove()\n"+
+      "  End Function\n"+  
+      "  Private Sub Class_Initialize()\n"+
+      "    Set obj__ = ThingBaseFactory()\n"+
+      "  End Sub\n"+
+      "End Class\n"+
+      "' We need a factory because we can't call 'New' from javascript\n"+
+      "Function thingProxyFactory()\n"+
+      "  Dim tmp\n"+
+      "  Set tmp = New ThingProxy\n"+
+      "  Set thingProxyFactory = tmp\n"+
+      "End Function\n";
+
+    // Register the proxy class in the global context, make the factory global
+    exec_vb_global(obj);
+    
+    // The actual thing constructor
+    var Thing = function() { return (window["thingProxyFactory"]()) }    
+    
+    console.log(Thing);
+    console.log(Thing.prototype);
+    // function ThingProto(){
+    //   this.hoho = 293;
+    // }
+    
+    // Use the thing
+    
+    function YamaComponent(desc){
+      for (var k in desc){
+        var t = new Thing();
+      }
+
+    }
+
+    var comp = new YamaComponent({
+      'toto':9523
+    });
+
+    //t.prototype = new ThingProto();
+    t.groove();
+    console.log(t.space);
+    t.space = "Imma let you finish";
+    console.log(t.space);
+    console.log(t.hoho);
+
+  </script>
+</body>
+</html>  

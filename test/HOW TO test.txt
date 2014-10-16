@@ -1,0 +1,11 @@
+
+
+
+1) Install huxley ( https://github.com/facebook/huxley )
+2) Go to the root of the project (yama.js directory) and run python -m SimpleHTTPServer
+3) You should have access to tests at http://localhost:8000/test/
+4) Go to "test" directory on terminal, run "huxley"
+
+
+To write a new test : create a new folder and huxley record. See huxley documentation : https://github.com/facebook/huxley
+
