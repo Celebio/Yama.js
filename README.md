@@ -3,7 +3,7 @@ Yama.js
 
 Build Reusable UI in Javascript
 
-Yama.js is an attemp to combine what I liked most of Angular, Knockout and React.
+Yama.js is an attempt to combine what I liked most of Angular, Knockout and React.
 
 It gets :
   - from React: The "everything is a component" philosophy and UI description in javascript files,
