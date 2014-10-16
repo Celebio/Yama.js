@@ -7,7 +7,7 @@ Yama.js is an attemp to combine what I liked most of Angular, Knockout and React
 
 It gets :
   - from React: The "everything is a component" philosophy and UI description in javascript files,
-  - from Angular : Observables with seamless js syntax. myComponent.title = "Hi" instead of myComponent.title("Hi")
+  - from Angular : Observables with seamless js syntax. `myComponent.title = "Hi"` instead of `myComponent.title("Hi")`
   - from Knockout : Declarative binding attributes
 
 Enhanced reusability
