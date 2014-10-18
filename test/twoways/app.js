@@ -13,8 +13,7 @@ yama.register({
         !*/
     },
 
-    title : "Initial title",
-    otherTitle : "Other title",
+    title : "Hello, world !",
     resetTitle : function(){
         this.title = "Welcome !";
     }
@@ -25,17 +24,11 @@ yama.addLoadEvent(function(){
     var cont = document.getElementById("test");
     var myComponent = new yama.components.nereo.mycomponent(cont);
     
-    // console.log(yama.components.nereo.mycomponent);
-    // console.log(myComponent);
-    
-    // myComponent.title = "Simple tester";
 
-    // var testBtn = document.getElementById("testBtn");
-    // testBtn.onclick = function(){
-    //     myComponent.otherTitle = "Bonjour";
-    // }
+    setTimeout(function(){
+        document.getElementsByTagName("INPUT")[0].focus();
+    }, 100);
 
-    
 });
 
 

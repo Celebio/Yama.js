@@ -5,7 +5,7 @@ yama.register({
     draw : function(){
         /*!
         root
-            input value:curTask avalue:curTask onenter:addTask
+            input value:curTask onenter:addTask
             div
                 foreach:itVar taskItem:taskList
                     div
