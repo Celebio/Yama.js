@@ -21,7 +21,6 @@
   </head>
   <body>
 
-<a href="https://github.com/Celebio/Yama.js"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
 
     <div class="jumbCont">
         
@@ -29,32 +28,111 @@
             <div class="jumbotron">
           
                 <h1>Yama.js</h1>
-                <p class="lead">Build Reusable UI in Javascript.</p>
-                <p><a class="btn btn-lg btn-success" href="https://github.com/Celebio/Yama.js/archive/master.zip" role="button">Download 0.1.0</a></p>
+                <p class="lead">The most <span>compact</span> way to build <span>reusable UI</span> in Javascript.</p>
+                <p><a class="btn btn-lg btn-success" href="https://github.com/Celebio/Yama.js" target="_blank" role="button">Fork it on Github</a></p>
             </div>
 
+
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-6">
+            <p>A simple "To Do List" app in 25 lines.</p>
+                    <pre>
+<span class="nl nl0">yama.register({</span>
+<span class="nl nl0">    name : 'toDoListComponent',</span>
+<span class="nl nl0">    draw : function(){</span>
+<span class="nl nl1">        /*!</span>
+<span class="nl nl1">        root</span>
+<span class="nl nl1">          input value:curTask onenter:addTask</span>
+<span class="nl nl1">          div</span>
+<span class="nl nl1">            foreach:itVar taskItem:taskList</span>
+<span class="nl nl1">              div</span>
+<span class="nl nl1">                span text:taskItem</span>
+<span class="nl nl1">                span:close text:closeText onclick:onCloseClick</span>
+<span class="nl nl1">        !*/</span></span>
+<span class="nl nl0">    },</span>
+<span class="nl nl0"></span>
+<span class="nl nl2">    curTask : "",</span>
+<span class="nl nl0">    closeText : "&times;",</span>
+<span class="nl nl2">    taskList : ["Download Yama", "Code cool stuff", "Enjoy life"],</span>
+<span class="nl nl0">    addTask : function(){</span>
+<span class="nl nl2">        this.taskList.unshift(this.curTask);</span>
+<span class="nl nl2">        this.curTask = '';</span>
+<span class="nl nl0">    },</span>
+<span class="nl nl0">    onCloseClick : function(g){</span>
+<span class="nl nl0">        this.taskList.splice(g('itVar'), 1);</span>
+<span class="nl nl0">    }</span>
+<span class="nl nl0">});</span></pre>
+                </div>
+                <div class="col-lg-6">
+                    <p>Result :</p>
+                    
+                    <div id="todocompexample" class="resultJumbo"></div>
+                </div>
+            </div>
+        <script>
+yama.register({
+    name : 'toDoListComponent',
+    draw : function(){
+        /*!
+        root
+            input:inputDom value:curTask onenter:addTask
+            div:forCont
+                foreach:itVar taskItem:taskList
+                    div:taskDom
+                        span text:taskItem
+                        span:close text:closeText onclick:onCloseClick
+        !*/
+    },
+
+    curTask : "",
+    closeText : "&times;",
+    taskList : ["Download Yama", "Code cool stuff", "Enjoy life"],
+    init : function(){
+        this.inputDom.setAttribute('placeholder', "What needs to be done?");
+    },
+
+    addTask : function(){
+        this.taskList.unshift(this.curTask);
+        this.curTask = '';
+    },
+    onCloseClick : function(g){
+        this.taskList.splice(g('itVar'), 1);
+    }
+});
+
+
+yama.addLoadEvent(function(){
+    var cont = document.getElementById("todocompexample");
+    var myComponent = new yama.components.toDoListComponent(cont);    
+});
+        </script>
+
+
+
+
+
+
+            <div class="row">
+                <div class="col-lg-4 feature-col" id="compactUICol">
+                  <h2>Compact UI templates</h2>
+                  <p>Yama includes a simple Yaml/Jade-like templating syntax to build the dom tree of your UI, and it binds automatically events and observables to your view object.<p>
+                  <p>It's described as a copyright comment in <code>draw</code> function. (decent minifiers won't touch it)</p>
+                </div>
+                <div class="col-lg-4 feature-col" id="realObservablesCol">
+                  <h2>Real observables</h2>
+                  <p>Observables with seamless js syntax. Yama uses native javascript accessors to handle changes in view objects. It means that you can't get in trouble with digest loop because there isn't one.</p>
+                </div>
+                <div class="col-lg-4 feature-col" id="reuseCol">
                   <h2>Enhanced reusability</h2>
                   <p>Yama encourages you to describe your UI as a component, that means you can reuse it later inside another component.</p>
                   <p><a class="btn btn-success" href="#reuse" role="button">View example &raquo;</a></p>
-                </div>
-                <div class="col-lg-4">
-                  <h2>Declarative UI in js</h2>
-                  <p>Yama includes a simple templating syntax to build the dom tree of your UI, and it binds automatically events and observables to your view object.</p>
-                  <p><a class="btn btn-success" href="#declUI" role="button">View example &raquo;</a></p>
-                </div>
-                <div class="col-lg-4">
-                  <h2>Real observables</h2>
-                  <p>Observables with seamless js syntax. Yama uses native javascript accessors to handle changes in view objects. It means that you can't get in trouble with digest loop because there isn't one.</p>
-                  <p><a class="btn btn-success" href="#basicInt" role="button">View example &raquo;</a></p>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container">
-        <h3>Yama.js is an attempt to combine what I liked most of Angular, Knockout and React.</h3>
+        <h3>Yama.js is an attempt to combine the best of Angular, Knockout and React.</h3>
         <p>It gets :
             <ul>
                 <li>from <b>React</b>: The "everything is a component"  philosophy and UI description in javascript files,</li>
@@ -79,7 +157,6 @@
                 <div class="col-lg-3">
                   <h3>Not verbose</h3>
                   <p>You only take care of writing the behaviour of your UI, nothing else.</p>
-                  <p><a class="btn btn-success" href="#simpletodo" role="button">See "to do list" example &raquo;</a></p>
                 </div>
                 <div class="col-lg-3">
                   <h3>Lightweight</h3>
@@ -246,86 +323,6 @@ yama.addLoadEvent(function(){
 
 
 
-    <section id="simpletodo">
-        <div class="container">
-            <h2>A simple To Do List component</h2>
-            <div class="row">
-                <div class="col-lg-6">
-                    <pre>
-yama.register({
-    name : 'toDoListComponent',
-    draw : function(){
-        /*!
-        root
-          input value:curTask avalue:curTask onenter:addTask
-          div
-            foreach:itVar taskItem:taskList
-              div
-                span text:taskItem
-                span:close text:closeText onclick:onCloseClick
-        !*/
-    },
-
-    curTask : "",
-    closeText : "&times;",
-    taskList : ["Go to Walmart", "Learn to Play Guitar", "Justin Bieber concert"],
-
-    addTask : function(){
-        this.taskList.unshift(this.curTask);
-        this.curTask = '';
-    },
-    onCloseClick : function(g){
-        this.taskList.splice(g('itVar'), 1);
-    }
-});</pre>
-                </div>
-                <div class="col-lg-6">
-                    Type a task and press enter :
-                    <div id="todocompexample" class="result"></div>
-                </div>
-            </div>
-            <p>A simple To Do List component.</p>
-        </div>
-        <script>
-yama.register({
-    name : 'toDoListComponent',
-    draw : function(){
-        /*!
-        root
-            input:inputDom value:curTask avalue:curTask onenter:addTask
-            div:forCont
-                foreach:itVar taskItem:taskList
-                    div:taskDom
-                        span text:taskItem
-                        span:close text:closeText onclick:onCloseClick
-        !*/
-    },
-
-    curTask : "",
-    closeText : "&times;",
-    taskList : ["Go to Walmart", "Learn to Play Guitar", "Justin Bieber concert"],
-    init : function(){
-        this.inputDom.setAttribute('placeholder', "What needs to be done?");
-    },
-
-    addTask : function(){
-        this.taskList.unshift(this.curTask);
-        this.curTask = '';
-    },
-    onCloseClick : function(g){
-        this.taskList.splice(g('itVar'), 1);
-    }
-});
-
-
-yama.addLoadEvent(function(){
-    var cont = document.getElementById("todocompexample");
-    var myComponent = new yama.components.toDoListComponent(cont);    
-});
-        </script>
-    </section>
-
-
 
 
 
@@ -369,8 +366,9 @@ yama.register({
 });
 
 var elapsed = 0;
+var component = new yama.components.myComponent3();
 setInterval(function(){ 
-    <b>myComponent3.elapsedDiv</b>.innerHTML = (elapsed++); 
+    <b>component.elapsedDiv</b>.innerHTML = (elapsed++); 
 }, 1000);
 </pre>
                 </div>
@@ -436,8 +434,9 @@ yama.register({
     title : "Not clicked yet.",
 });
 
+var component = new yama.components.myComponent4();
 example4Btn.onclick = function(){ 
-    <b>myComponent4.title = "Clicked !";</b>
+    <b>component.title = "Clicked !";</b>
 };
 </pre>
                 </div>
@@ -1092,16 +1091,44 @@ yama.addLoadEvent(function(){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $("#compactUICol").hover(function(){
+            $(".nl0").fadeTo(0, 0.2);
+            $(".nl2").fadeTo(0, 0.2);
+            $("#compactUICol").css("background-color","#2E3140");
+        }, function(){
+            $(".nl0").fadeTo(0, 1);
+            $(".nl2").fadeTo(0, 1);
+            $("#compactUICol").css("background-color","transparent");
+        });
 
+        $("#realObservablesCol").hover(function(){
+            $(".nl0").fadeTo(0, 0.2);
+            $(".nl1").fadeTo(0, 0.2);
+            $("#realObservablesCol").css("background-color","#2E3140");
+        }, function(){
+            $(".nl0").fadeTo(0, 1);
+            $(".nl1").fadeTo(0, 1);
+            $("#realObservablesCol").css("background-color","transparent");
+        });
+
+
+        $("#reuseCol").hover(function(){
+            $("#reuseCol").css("background-color","#2E3140");
+        }, function(){
+            $("#reuseCol").css("background-color","transparent");
+        });
+
+    </script>
 
     <!-- Nirror -->
 <script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['NirrorObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();i[r].scriptURL=g;a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://static.nirror.com/client/nirrorclient.js','Ni');
- 
-Ni('site', '5440c303f8ce08a33b965886');
+// (function(i,s,o,g,r,a,m){i['NirrorObject']=r;i[r]=i[r]||function(){
+// (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();i[r].scriptURL=g;a=s.createElement(o),
+// m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+// })(window,document,'script','https://static.nirror.com/client/nirrorclient.js','Ni');
+//  
+// Ni('site', '5440c303f8ce08a33b965886');
 </script>
 <!-- End Nirror -->
 

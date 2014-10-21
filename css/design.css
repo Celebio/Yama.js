@@ -2,6 +2,16 @@
 /*https://color.adobe.com/beach-color-theme-4537521/
 */
 
+/*
+
+#2E3140
+#118C8C
+#91D9BF
+#DCF2E4
+#D95436
+
+*/
+
 pre b {
   color:#9C0C20;
 }
@@ -39,6 +49,19 @@ pre {
     padding:15px;
 }
 
+.resultJumbo{
+    border:1px solid #118C8C;
+    padding:15px;
+}
+.resultJumbo div{
+    padding:15px;
+}
+
+.resultJumbo span{
+    border:1px solid #C3D0DE;
+    padding:15px;
+}
+
 #todocompexample .forCont {
   padding:1px;
 }
@@ -53,10 +76,24 @@ pre {
   height:35px;
   width:250px;
 }
+#todocompexample .close {
+  color:#118C8C;
+  opacity: 1;
+}
+
 #todocompexample .taskDom {
-  border:1px solid #EEE;
+  border:1px solid #118C8C;
   padding:15px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+#todocompexample{
+  background-color:#DCF2E4;
+  color:#118C8C;
+}
+.feature-col{
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 section {
@@ -69,6 +106,24 @@ section {
   margin-top: 40px;
   border-top: 1px solid #eee;
 }
+
+.nl0{
+  opacity: 1;
+}
+
+.nl1{
+    color:#D95436;
+    opacity: 1;
+}
+.nl2{
+    opacity: 1;
+}
+
+.lead span{
+  font-weight: bold;
+  color:#FFCB00;
+}
+
 
 
 
