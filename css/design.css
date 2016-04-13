@@ -12,12 +12,29 @@
 
 */
 
+code {
+  display: inline;
+}
+
+#jumbexampleeditor{
+  height:550px;
+}
+
+
+.cover-thing {
+    width: 100%;
+    min-height: 100vh;
+    float: left;
+    background-size: cover;
+}
+
+
 pre b {
   color:#9C0C20;
 }
 
 pre {
-  background-color: #DCF2E4;
+  background-color: #FEFFF6;
 }
 
 .navbar{
@@ -25,13 +42,19 @@ pre {
 }
 
 .jumbCont{
-  background-color: #118C8C;
-  background: linear-gradient(#118C8C, #146969);
-  color: #DCF2E4;
+
+  background: #360033; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #360033 , #0b8793); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #360033 , #0b8793); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #9BC0D0;
 }
 .feat{
-  background-color: #118C8C;
-  color: #DCF2E4;
+  background: #360033; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #360033 , #0b8793); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #360033 , #0b8793); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #9BC0D0;
+
+  min-height: 50px;
 }
 
 .result{
@@ -52,6 +75,7 @@ pre {
 .resultJumbo{
     border:1px solid #118C8C;
     padding:15px;
+    margin-bottom: 100px;
 }
 .resultJumbo div{
     padding:15px;
@@ -62,32 +86,32 @@ pre {
     padding:15px;
 }
 
-#todocompexample .forCont {
+#liveresult .forCont {
   padding:1px;
 }
 
-#todocompexample span {
+#liveresult span {
   padding:0px;
   border:none;
 }
-#todocompexample input {
+#liveresult input {
   margin-bottom:5px;
   font-size: 20px;
   height:35px;
   width:250px;
 }
-#todocompexample .close {
+#liveresult .close {
   color:#118C8C;
   opacity: 1;
 }
 
-#todocompexample .taskDom {
+#liveresult .taskDom {
   border:1px solid #118C8C;
   padding:15px;
   border-radius: 3px;
   margin-bottom: 5px;
 }
-#todocompexample{
+#liveresult{
   background-color:#DCF2E4;
   color:#118C8C;
 }
@@ -97,7 +121,7 @@ pre {
 }
 
 section {
-    margin-top:50px;
+    margin-top:150px;
 }
 
 .footer {
@@ -155,10 +179,10 @@ section {
 }
 
 
-.header-feature:hover{
+/*.header-feature:hover{
     background-color:rgba(0,0,0,0.1);
 
-}
+}*/
 
 .header-feature .title{
 }

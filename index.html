@@ -22,149 +22,85 @@
   <body>
 
 
-    <div class="jumbCont">
-        
+    <div class="cover-thing jumbCont">
+
         <div class="container">
             <div class="jumbotron">
-          
+
                 <h1>Yama.js</h1>
                 <p class="lead">The most <span>compact</span> way to build <span>reusable UI</span> in Javascript.</p>
-                <p><a class="btn btn-lg btn-success" href="https://github.com/Celebio/Yama.js" target="_blank" role="button">Fork it on Github</a></p>
+                <p><a class="btn btn-success" href="https://raw.githubusercontent.com/Celebio/Yama.js/master/lib/yama.min.js" target="_blank" role="button">Get it</a></p>
+            </div>
+
+            <div class="jumbotron">
+                <p>
+                    <span id="remainingsentence">Coding a to do app in <span id="remsec">...</span> seconds :</span>
+                </p>
             </div>
 
 
             <div class="row">
                 <div class="col-lg-6">
-            <p>A simple "To Do List" app in 25 lines.</p>
-                    <pre>
-<span class="nl nl0">yama.register({</span>
-<span class="nl nl0">    name : 'toDoListComponent',</span>
-<span class="nl nl0">    draw : function(){</span>
-<span class="nl nl1">        /*!</span>
-<span class="nl nl1">        root</span>
-<span class="nl nl1">          input value:curTask onenter:addTask</span>
-<span class="nl nl1">          div</span>
-<span class="nl nl1">            foreach:itVar taskItem:taskList</span>
-<span class="nl nl1">              div</span>
-<span class="nl nl1">                span text:taskItem</span>
-<span class="nl nl1">                span:close text:closeText onclick:onCloseClick</span>
-<span class="nl nl1">        !*/</span></span>
-<span class="nl nl0">    },</span>
-<span class="nl nl0"></span>
-<span class="nl nl2">    curTask : "",</span>
-<span class="nl nl0">    closeText : "&times;",</span>
-<span class="nl nl2">    taskList : ["Download Yama", "Code cool stuff", "Enjoy life"],</span>
-<span class="nl nl0">    addTask : function(){</span>
-<span class="nl nl2">        this.taskList.unshift(this.curTask);</span>
-<span class="nl nl2">        this.curTask = '';</span>
-<span class="nl nl0">    },</span>
-<span class="nl nl0">    onCloseClick : function(g){</span>
-<span class="nl nl0">        this.taskList.splice(g('itVar'), 1);</span>
-<span class="nl nl0">    }</span>
-<span class="nl nl0">});</span></pre>
+            <p>A simple "To Do List" app in 31 lines.</p>
+<pre id="jumbexampleeditor"></pre>
                 </div>
                 <div class="col-lg-6">
-                    <p>Result :</p>
-                    
-                    <div id="todocompexample" class="resultJumbo"></div>
+                    <p>Live Result :</p>
+
+                    <div id="liveresult" class="resultJumbo"></div>
                 </div>
             </div>
-        <script>
-yama.register({
-    name : 'toDoListComponent',
-    draw : function(){
-        /*!
-        root
-            input:inputDom value:curTask onenter:addTask
-            div:forCont
-                foreach:itVar taskItem:taskList
-                    div:taskDom
-                        span text:taskItem
-                        span:close text:closeText onclick:onCloseClick
-        !*/
-    },
 
-    curTask : "",
-    closeText : "&times;",
-    taskList : ["Download Yama", "Code cool stuff", "Enjoy life"],
-    init : function(){
-        this.inputDom.setAttribute('placeholder', "What needs to be done?");
-    },
-
-    addTask : function(){
-        this.taskList.unshift(this.curTask);
-        this.curTask = '';
-    },
-    onCloseClick : function(g){
-        this.taskList.splice(g('itVar'), 1);
-    }
-});
-
-
-yama.addLoadEvent(function(){
-    var cont = document.getElementById("todocompexample");
-    var myComponent = new yama.components.toDoListComponent(cont);    
-});
-        </script>
-
-
-
-
-
-
-            <div class="row">
-                <div class="col-lg-4 feature-col" id="compactUICol">
-                  <h2>Compact UI templates</h2>
-                  <p>Yama includes a simple Yaml/Jade-like templating syntax to build the dom tree of your UI, and it binds automatically events and observables to your view object.<p>
-                  <p>It's described as a copyright comment in <code>draw</code> function. (decent minifiers won't touch it)</p>
-                </div>
-                <div class="col-lg-4 feature-col" id="realObservablesCol">
-                  <h2>Real observables</h2>
-                  <p>Observables with seamless js syntax. Yama uses native javascript accessors to handle changes in view objects. It means that you can't get in trouble with digest loop because there isn't one.</p>
-                </div>
-                <div class="col-lg-4 feature-col" id="reuseCol">
-                  <h2>Enhanced reusability</h2>
-                  <p>Yama encourages you to describe your UI as a component, that means you can reuse it later inside another component.</p>
-                  <p><a class="btn btn-success" href="#reuse" role="button">View example &raquo;</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
+        </div>  <!-- jumbotron -->
+    </div> <!-- container -->
 
     <div class="container">
-        <h3>Yama.js is an attempt to combine the best of Angular, Knockout and React.</h3>
-        <p>It gets :
-            <ul>
-                <li>from <b>React</b>: The "everything is a component"  philosophy and UI description in javascript files,</li>
-                <li>from <b>Angular</b> : Observables with seamless js syntax. <code>myComponent.title = "Hi"</code> instead of <code>myComponent.title("Hi")</code></li>
-                <li>from <b>Knockout</b> : Declarative binding attributes</li>
-            </ul>
-        </p>
+
+        <div class="row">
+            <div class="col-lg-6 feature-col">
+              <h3>It fits in a Commodore 16</h3>
+              <p>Which is useless. But Yama is really lightweight: 7 KB minified.<p>
+              <p><a class="btn btn-success" href="https://raw.githubusercontent.com/Celebio/Yama.js/master/lib/yama.min.js" target="_blank" role="button">Have a look &raquo;</a></p>
+            </div>
+            <div class="col-lg-6 feature-col">
+              <h3>Vanilla Javascript</h3>
+              <p>You love jQuery? Good for you. Yama doesn't need it.<p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 feature-col" id="compactUICol">
+              <h3>What the...? View description as a comment?! </h3>
+              <p>Yes. Why not?</p>
+              <p>It is a Yaml/Jade-like templating syntax to build the dom tree of your UI, and it binds automatically events and observables to your view object.<p>
+              <p>It's described as a <b>copyright comment</b> in <code>draw</code> function, so decent minifiers won't touch it.</p>
+            </div>
+            <div class="col-lg-6 feature-col" id="realObservablesCol">
+              <h3>Real observables</h3>
+              <p>Javascript is mature enough to have accessor handlers and Yama takes advantage of it.</p>
+              <p>Observables have seamless js syntax. Yama uses native javascript accessors to handle changes in view objects. It means that you can't get in trouble with digest loop because... you know, there isn't any.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 feature-col" id="reuseCol">
+              <h3>Anything you write is automatically reusable</h3>
+              <p>Yama <strike>encourages</strike> forces you to describe your UI as a component. You can reuse it later inside another component.</p>
+              <p><a class="btn btn-success" href="#reuse" role="button">View example &raquo;</a></p>
+            </div>
+            <div class="col-lg-6 feature-col" id="reuseCol">
+                <h3>Inspiration</h3>
+                <p>It gets :
+                    <ul>
+                        <li>from <b>React</b>: The "everything is a component"  philosophy and UI description in javascript files,</li>
+                        <li>from <b>Angular</b> : Observables with seamless js syntax. <code>myComponent.title = "Hi"</code> instead of <code>myComponent.title("Hi")</code></li>
+                        <li>from <b>Knockout</b> : Declarative binding attributes</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+
     </div>
     <div class="feat">
-        
-        <div class="container">
-            <h3>... and it is:</h3>
-            <div class="row">
-                <div class="col-lg-3">
-                  <h3>Free, open source</h3>
-                  <p><a class="btn btn-success" href="https://github.com/Celebio/Yama.js" role="button">Fork it on Github &raquo;</a></p>
-                </div>
-                <div class="col-lg-3">
-                  <h3>Vanilla JavaScript</h3>
-                  <p>works with any web framework and has no dependencies.</p>
-               </div>
-                <div class="col-lg-3">
-                  <h3>Not verbose</h3>
-                  <p>You only take care of writing the behaviour of your UI, nothing else.</p>
-                </div>
-                <div class="col-lg-3">
-                  <h3>Lightweight</h3>
-                  <p>7 KB minified</p>
-                </div>
-            </div>
 
-        </div>
 
     </div>
 
@@ -200,7 +136,7 @@ var myComponent = new yama.components.myComponent1(document.body);
                 <div class="col-lg-6">
                     <div id="example1" class="result"></div>
                     <div class="alert alert-warning" role="alert">
-        Results shown in this page are styled with border and padding for the purpose of clarity. Yama actually builds a plain dom tree without style. 
+        Results shown in this page are styled with border and padding for the purpose of clarity. Yama actually builds a plain dom tree without style.
       </div>
                 </div>
             </div>
@@ -215,7 +151,7 @@ var myComponent = new yama.components.myComponent1(document.body);
             If you want your component to be drawn into a specific dom element : <code>var myComponent = new yama.components.myComponent1(document.getElementById("example1"));</code></p>
 
             <div class="alert alert-warning" role="alert">
-                The UI described as a comment may sound weird. The comment is serialized by yama, analysed by a simple parser, and rendered. Binding attributes are bound to observables. The use of comment as a multi-line string is actually a hack to provide a simple way to build UI with a non-verbose templating language.  
+                The UI described as a comment may sound weird. The comment is serialized by yama, analysed by a simple parser, and rendered. Binding attributes are bound to observables. The use of comment as a multi-line string is actually a hack to provide a simple way to build UI with a non-verbose templating language.
             </div>
         </div>
         <script>
@@ -233,7 +169,7 @@ yama.register({
 
 yama.addLoadEvent(function(){
     var cont = document.getElementById("example1");
-    var myComponent = new yama.components.myComponent1(cont);    
+    var myComponent = new yama.components.myComponent1(cont);
 });
         </script>
     </section>
@@ -306,7 +242,7 @@ yama.register({
 
 yama.addLoadEvent(function(){
     var cont = document.getElementById("example2");
-    var myComponent = new yama.components.myComponent2(cont);    
+    var myComponent = new yama.components.myComponent2(cont);
 });
         </script>
     </section>
@@ -367,8 +303,8 @@ yama.register({
 
 var elapsed = 0;
 var component = new yama.components.myComponent3();
-setInterval(function(){ 
-    <b>component.elapsedDiv</b>.innerHTML = (elapsed++); 
+setInterval(function(){
+    <b>component.elapsedDiv</b>.innerHTML = (elapsed++);
 }, 1000);
 </pre>
                 </div>
@@ -435,7 +371,7 @@ yama.register({
 });
 
 var component = new yama.components.myComponent4();
-example4Btn.onclick = function(){ 
+example4Btn.onclick = function(){
     <b>component.title = "Clicked !";</b>
 };
 </pre>
@@ -466,7 +402,7 @@ yama.addLoadEvent(function(){
     var example4Btn = document.getElementById("example4Btn");
     var myComponent4 = new yama.components.myComponent4(cont);
 
-    example4Btn.onclick = function(){ 
+    example4Btn.onclick = function(){
         myComponent4.title = "Clicked !";
     };
 });
@@ -649,7 +585,7 @@ yama.register({
                 myComponent5
         !*/
     },
-    
+
     btnTitle : "Click here to set second component's value",
     btnClick : function(){
         <b>this.componentChild2</b>.number = 1337;
@@ -680,7 +616,7 @@ yama.register({
                 myComponent5
         !*/
     },
-    
+
     btnTitle : "<b>Click here to set second component's value</b>",
     btnClick : function(){
         this.componentChild2.number = 1337;
@@ -735,11 +671,11 @@ yama.register({
     name : 'myComponent8Outside',
     draw : function(){
         /*!
-        root 
+        root
             myComponent8Inside <b>onMyFabulousEvent:childFiredEvent</b>
         !*/
     },
-    
+
     <b>childFiredEvent</b> : function(){
         alert("myComponent8Inside fired onMyFabulousEvent");
     }
@@ -755,7 +691,7 @@ yama.register({
             div:btn text:btnTitle onclick:btnClick
         !*/
     },
-    
+
     btnTitle : "Click here to fire myFabulousEvent",
     btnClick : function(){
         <b>this.onMyFabulousEvent();</b>
@@ -774,11 +710,11 @@ yama.register({
     name : 'myComponent8Outside',
     draw : function(){
         /*!
-        root 
+        root
             myComponent8Inside onMyFabulousEvent:childFiredEvent
         !*/
     },
-    
+
     childFiredEvent : function(){
         alert("myComponent8Inside fired onMyFabulousEvent");
     }
@@ -794,7 +730,7 @@ yama.register({
             div:btn text:btnTitle onclick:btnClick
         !*/
     },
-    
+
     btnTitle : "Click here to fire myFabulousEvent",
     btnClick : function(){
         this.onMyFabulousEvent();
@@ -1092,45 +1028,300 @@ yama.addLoadEvent(function(){
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        $("#compactUICol").hover(function(){
-            $(".nl0").fadeTo(0, 0.2);
-            $(".nl2").fadeTo(0, 0.2);
-            $("#compactUICol").css("background-color","#2E3140");
-        }, function(){
-            $(".nl0").fadeTo(0, 1);
-            $(".nl2").fadeTo(0, 1);
-            $("#compactUICol").css("background-color","transparent");
-        });
 
-        $("#realObservablesCol").hover(function(){
-            $(".nl0").fadeTo(0, 0.2);
-            $(".nl1").fadeTo(0, 0.2);
-            $("#realObservablesCol").css("background-color","#2E3140");
-        }, function(){
-            $(".nl0").fadeTo(0, 1);
-            $(".nl1").fadeTo(0, 1);
-            $("#realObservablesCol").css("background-color","transparent");
-        });
-
-
-        $("#reuseCol").hover(function(){
-            $("#reuseCol").css("background-color","#2E3140");
-        }, function(){
-            $("#reuseCol").css("background-color","transparent");
-        });
 
     </script>
 
-    <!-- Nirror -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['NirrorObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();i[r].scriptURL=g;a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://static.nirror.com/client/nirrorclient.js','Ni');
- 
-Ni('site', '5440c303f8ce08a33b965886');
-</script>
-<!-- End Nirror -->
+    <script src="src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var editor = ace.edit("jumbexampleeditor");
+        editor.setTheme("ace/theme/solarized_dark");
+        editor.session.setMode("ace/mode/javascript");
+        editor.setOptions({
+            readOnly: true
+        });
+    </script>
+
+    <script>
+
+
+        /**********************************
+
+            HEY !
+
+            What follows is ugly.
+
+            Yama.js itself is better coded.
+
+
+
+
+
+        ************************************/
+        var counterTI = 0;
+        var remainingSec = 80;
+        var elapsedSec = 0;
+
+        function beginDemo(){
+            var session = editor.session;
+
+            var edits = [
+                {
+                    'position':{'row':0, 'column':0},
+                    'str':"var domRef = document.getElementById(\"liveresult\");\n"
+                },
+                {
+                    'position':{'row':0, 'column':0},
+                    'str':"\n"
+                },
+                {
+                    'position':{'row':0, 'column':0},
+                    'str':"yama.register({\n\n"
+                },
+                {
+                    'position':{'row':2, 'column':0},
+                    'str':"});\n"
+                },
+                {
+                    'position':{'row':1, 'column':0},
+                    'str':"    'name' : 'toDoListComponent',\n"
+                },
+                {
+                    'position':{'row':8, 'column':0},
+                    'str':"var myComponent = new yama.components.toDoListComponent(domRef);"
+                },
+                {
+                    'position':{'row':2, 'column':0},
+                    'str':"    draw : function(){\n"
+                },
+                {
+                    'position':{'row':3, 'column':0},
+                    'str':"    },\n"
+                },
+                {
+                    'position':{'row':3, 'column':0},
+                    'str':"\n        /*!"
+                },
+                {
+                    'position':{'row':4, 'column':0},
+                    'str':"\n        !*/"
+                },
+                {
+                    'position':{'row':4, 'column':0},
+                    'str':"\n        root"
+                },
+                {
+                    'position':{'row':5, 'column':0},
+                    'str':"\n            input"
+                },
+                {
+                    'render':true
+                },
+                {
+                    'position':{'row':5, 'column':19},
+                    'str':":newTaskInput"
+                },
+                {
+                    'position':{'row':8, 'column':0},
+                    'str':"    init : function(){\n"
+                },
+                {
+                    'position':{'row':9, 'column':0},
+                    'str':"    },"
+                },
+                {
+                    'position':{'row':9, 'column':0},
+                    'str':"\n        this.newTaskInput.setAttribute('placeholder',",
+                },
+                {
+                    'position':{'row':10, 'column':0},
+                    'str':"\n            \"What needs to be done?\");",
+                },
+                {
+                    'render':true
+                },
+                {
+                    'position':{'row':8, 'column':0},
+                    'str':"\n    'taskList' : [\"Download Yama\", \"Code cool stuff\", \"Enjoy life\"],"
+                },
+                {
+                    'position':{'row':6, 'column':0},
+                    'str':"\n            div"
+                },
+                {
+                    'position':{'row':7, 'column':0},
+                    'str':"\n               foreach taskItem:taskList"
+                },
+                {
+                    'position':{'row':8, 'column':0},
+                    'str':"\n                   div text:taskItem"
+                },
+                {
+                    'render':true
+                },
+                {
+                    'position':{'row':9, 'column':0},
+                    'str':"\n                       span text:taskItem"
+                },
+                {
+                    'findanddelete':" text:taskItem"
+                },
+                {
+                    'render':true
+                },
+                {
+                    'position':{'row':8, 'column':24},
+                    'str':":taskDom"
+                },
+                {
+                    'render':true
+                },
+                {
+                    'position':{'row':13, 'column':0},
+                    'str':"\n    'closeText' : \"&times;\","
+                },
+                {
+                    'position':{'row':10, 'column':0},
+                    'str':"\n                       span:close text:closeText"
+                },
+                {
+                    'render':true
+                },
+                {
+                    'position':{'row':10, 'column':50},
+                    'str':" onclick:onCloseClick"
+                },
+                {
+                    'position':{'row':19, 'column':0},
+                    'str':"\n    onCloseClick : function(g){"
+                },
+                {
+                    'position':{'row':20, 'column':0},
+                    'str':"\n    }"
+                },
+                {
+                    'position':{'row':20, 'column':0},
+                    'str':"\n        this.taskList.splice(g('itVar'), 1);"
+                },
+                {
+                    'render':true
+                },
+                {
+                    'position':{'row':5, 'column':32},
+                    'str':" value:curTask onenter:addTask"
+                },
+                {
+                    'position':{'row':14, 'column':0},
+                    'str':"\n    'curTask' : \"\","
+                },
+                {
+                    'position':{'row':20, 'column':0},
+                    'str':"\n    addTask : function(){"
+                },
+                {
+                    'position':{'row':21, 'column':0},
+                    'str':"\n    },"
+                },
+                {
+                    'position':{'row':21, 'column':0},
+                    'str':"\n        this.taskList.unshift(this.curTask);"
+                },
+                {
+                    'position':{'row':22, 'column':0},
+                    'str':"\n        this.curTask = '';"
+                },
+                {
+                    'render':true
+                }
+            ];
+
+
+            var typeSpeed = 50;
+            var typeRand = 450;
+            var curEditNo = 0;
+
+            var writerFunc = null;
+            var range = null;
+
+            writerFunc = function(lng){
+                var typeDurationMultiplier = 1.0;
+                if (edits[curEditNo].findanddelete){
+                    var findanddelete = edits[curEditNo].findanddelete;
+                    range = editor.find(findanddelete,{
+                        wrap: true,
+                        caseSensitive: true,
+                        wholeWord: true,
+                        regExp: false,
+                        preventScroll: true // do not change selection
+                    });
+
+                    editor.selection.setRange(range);
+                    editor.session.replace(range, "");
+                    editor.selection.clearSelection();
+                    lng = -1;
+                    curEditNo++;
+                } else if (edits[curEditNo].render){
+                    var liveresult = document.getElementById("liveresult");
+                    liveresult.innerHTML = "";
+                    yama.components.toDoListComponent = false;
+                    eval(editor.getValue());
+
+                    lng = -1;
+                    curEditNo++;
+                } else {
+
+                    var myStr = edits[curEditNo].str;
+                    var basePosition = edits[curEditNo].position;
+
+                    var myChar = myStr.substring(lng, lng+1);
+                    session.insert({
+                        'row':basePosition.row,
+                        'column':basePosition.column+lng
+                    }, myChar);
+
+                    editor.moveCursorToPosition({
+                        'row':basePosition.row,
+                        'column':basePosition.column+lng+1
+                    });
+
+                    if (myChar == ' '){
+                        typeDurationMultiplier = 0.01;
+                    }
+
+                    if (lng >= myStr.length+1){
+                        curEditNo++;
+                        lng = -1;
+                    }
+                }
+
+                if (curEditNo >= edits.length){
+                    clearTimeout(counterTI);
+                    document.getElementById("remainingsentence").innerText = "To do app coded in "+elapsedSec+" seconds. You can use it live."
+                    return;
+                }
+
+                setTimeout(function(){writerFunc(lng+1)}, typeDurationMultiplier*(typeSpeed+Math.ceil(Math.random()*Math.random()*Math.random()*typeRand)));
+            };
+
+            setTimeout(function(){writerFunc(0)}, 0);
+
+        }
+
+        beginDemo();
+        var remsec = document.getElementById("remsec");
+        counterTI = setInterval(function(){
+            elapsedSec++;
+            if (remainingSec > 0){
+                remainingSec--;
+                remsec.innerHTML = remainingSec;
+
+                if (remainingSec == 0){
+                    document.getElementById("remainingsentence").innerText = "Ok it takes a little bit more...";
+                }
+            }
+        }, 1000);
+
+    </script>
 
   </body>
 </html>
