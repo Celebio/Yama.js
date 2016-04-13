@@ -129,6 +129,14 @@ section {
   padding-bottom: 40px;
   margin-top: 40px;
   border-top: 1px solid #eee;
+
+  background: #0b8793;
+  color:#CDFBFF;
+}
+
+.footer a{
+  color:#CDFBFF;
+  text-decoration: underline;
 }
 
 .nl0{
